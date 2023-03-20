@@ -15,8 +15,31 @@
   </head>
   <body>
     <div class="container">
-      <h1>Test</h1>
-      <a href="" class="btn btn-primary">Click Me!</a>
+      <img src="" id="weather-icon" />
+      <h1 id="city"></h1>
+      <h2 id="row-one">
+        <span id="day">MONDAY</span> | <span id="date">MAR 20</span> |
+        <span id="time">2:44</span>
+      </h2>
+      <h2 id="row-two">
+        <span id="description">CLEAR</span> |
+        <span id="humidity">60%</span> HUMIDITY |
+        <span id="wind">8 mph</span>
+      </h2>
+      <br />
+      <br />
+      <div class="container text-center">
+        <div class="row">
+          <div class="col" id="day-one">20°</div>
+          <div class="col" id="day-two">19°</div>
+          <div class="col" id="current-day">20°</div>
+          <div class="col" id="day-four">21°</div>
+          <div class="col" id="day-five">23°</div>
+        </div>
+      </div>
+      <form id="city-search">
+        <input id="city-input" placeholder="Enter city name" type="search"></input>
+     </form>
     </div>
     <script src="src/script.js"></script>
   </body>
