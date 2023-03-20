@@ -15,7 +15,7 @@ body {
 
 .container {
     max-width: 80%;
-    min-width: 400px;
+    min-width: 300px;
     display: block;
     margin: auto 0;
     background-color: lightgray;
@@ -51,4 +51,9 @@ body {
     color:#9e9ea7;
     text-decoration: none;
     cursor: pointer;
+}
+.forecast{
+    display: block;
+    margin: auto 0;
+    min-width: 361px;
 }
