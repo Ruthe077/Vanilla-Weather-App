@@ -19,7 +19,6 @@ body {
     background-color: lightgray;
     color: #9e9ea7;
     border-radius: 15px;
-    padding-top: 20px;
     margin-top: 20px;
 }
 
@@ -35,4 +34,10 @@ body {
     padding-top: 20px;
     padding-bottom: 20px;
     border-radius: 15px;
+}
+.icon {
+    display: block;
+    margin: auto 0;
+    text-align: center;
+    font-size: 40px;
 }

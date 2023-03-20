@@ -11,11 +11,14 @@
       integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
       crossorigin="anonymous"
     />
+   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>Vanilla Weather App</title>
   </head>
   <body>
     <div class="container">
-      <img src="" id="weather-icon" />
+      <div class="icon">
+      <img src="#" id="icon">
+      </div>
       <h1 id="city"></h1>
       <h2 id="row-one">
         <span id="day">MONDAY</span> | <span id="date">MAR 20</span> |
@@ -23,8 +26,7 @@
       </h2>
       <h2 id="row-two">
         <span id="description">CLEAR</span> |
-        <span id="humidity">60%</span> HUMIDITY |
-        <span id="wind">8 mph</span>
+        <span id="humidity">60%</span>% HUMIDITY | WIND <span id="wind">8</span> MPH
       </h2>
       <br />
       <br />
