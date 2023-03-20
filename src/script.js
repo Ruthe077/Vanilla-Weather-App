@@ -37,7 +37,7 @@ function getTemp(response) {
   let humidity = document.querySelector("#humidity")
   let location = document.querySelector("#city");
   let city = response.data.city;
-  let cityTemp = document.querySelector("#current-day");
+  let cityTemp = document.querySelector("#temp");
   let condition = document.querySelector("#description");
   let wind = document.querySelector("#wind");
   let icon = document.querySelector("#icon");
@@ -61,7 +61,7 @@ function changeCity(event) {
 }
 
 
-  
+
 
 let form = document.querySelector("form");
 form.addEventListener("submit", changeCity);
