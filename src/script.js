@@ -33,18 +33,18 @@ day.innerHTML = days[now.getDay()].toUpperCase();
 
 function getTemp(response) {
   console.log(response);
-  let temp = Math.round(response.data.temperature.current);
+  let celciusTemp = Math.round(response.data.temperature.current);
   let humidity = document.querySelector("#humidity")
   let location = document.querySelector("#city");
-  let city = response.data.city;
   let cityTemp = document.querySelector("#temp");
+  let city = response.data.city;
   let condition = document.querySelector("#description");
   let wind = document.querySelector("#wind");
   let icon = document.querySelector("#icon");
   icon.setAttribute("src", response.data.condition.icon_url);
   condition.innerHTML = response.data.condition.description.toUpperCase();
   humidity.innerHTML = response.data.temperature.humidity;
-  cityTemp.innerHTML = `${temp}°`;
+  cityTemp.innerHTML = `${celciusTemp}°`;
   location.innerHTML = city;
  wind.innerHTML = Math.round(response.data.wind.speed);
 }
@@ -60,8 +60,26 @@ function changeCity(event) {
   axios.get(`${url}${city}&key=${apiKey}&${unit}`).then(getTemp);
 }
 
+function convertCelcius(event) {
+    event.preventDefault();
+    let cityTemp = document.querySelector("#temp");
+    cityTemp = celciusTemp;
+}
+
+function convertFahrenheit(event) {
+    event.preventDefault();
+    let cityTemp = document.querySelector("#temp");
+    cityTemp = (celciusTemp * 9) / 5 + 32;
+}
 
 
+let celciusTemp = null;
+
+let celciusButton = document.querySelector("#celcius");
+celciusButton.addEventListener("click", convertCelcius);
+
+let fahrenheitButton = document.querySelector("#fahrenheit");
+fahrenheitButton.addEventListener("click", convertFahrenheit);
 
 let form = document.querySelector("form");
 form.addEventListener("submit", changeCity);
