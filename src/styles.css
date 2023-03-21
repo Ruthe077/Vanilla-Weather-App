@@ -60,3 +60,6 @@ body {
     margin: auto 0;
     min-width: 361px;
 }
+.bottom {
+    padding-left: 60px;
+}
