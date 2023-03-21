@@ -33,7 +33,7 @@ day.innerHTML = days[now.getDay()].toUpperCase();
 
 function getTemp(response) {
   console.log(response);
-  let celciusTemp = Math.round(response.data.temperature.current);
+  celciusTemp = Math.round(response.data.temperature.current);
   let humidity = document.querySelector("#humidity")
   let location = document.querySelector("#city");
   let cityTemp = document.querySelector("#temp");
@@ -62,14 +62,19 @@ function changeCity(event) {
 
 function convertCelcius(event) {
     event.preventDefault();
+    fahrenheitButton.classList.remove("active");
+    celciusButton.classList.add("active");
     let cityTemp = document.querySelector("#temp");
-    cityTemp = celciusTemp;
+    cityTemp.innerHTML = `${celciusTemp}°`;
 }
 
 function convertFahrenheit(event) {
     event.preventDefault();
+    celciusButton.classList.remove("active");
+    fahrenheitButton.classList.add("active");
     let cityTemp = document.querySelector("#temp");
-    cityTemp = (celciusTemp * 9) / 5 + 32;
+   let fahrenheitTemp = (celciusTemp * 9) / 5 + 32;
+   cityTemp.innerHTML = `${Math.round(fahrenheitTemp)}°`;
 }
 
 

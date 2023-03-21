@@ -47,16 +47,14 @@ body {
     font-size: 20px;
     margin-bottom: 10px;
 }
-#celcius {
+
+.forecast .active {
     color:#9e9ea7;
     text-decoration: none;
     cursor: default;
 }
-#fahrenheit {
-    color: #9e9ea7;
-        text-decoration: none;
-        cursor: default;
-}
+
+
 .forecast{
     display: block;
     margin: auto 0;
