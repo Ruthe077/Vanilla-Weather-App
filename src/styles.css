@@ -55,11 +55,7 @@ body {
 }
 
 
-.forecast{
-    display: block;
-    margin: auto 0;
-    min-width: 361px;
-}
+
 .bottom {
     padding-left: 20%;
 }
