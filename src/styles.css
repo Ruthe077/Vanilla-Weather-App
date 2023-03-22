@@ -25,7 +25,7 @@ body {
 }
 
 #current-day {
-    font-size: 50px;
+    font-size: 40px;
     font-display: strong;
 }
 
@@ -48,7 +48,7 @@ body {
     margin-bottom: 10px;
 }
 
-.forecast .active {
+.current-day-forecast .active {
     color:#9e9ea7;
     text-decoration: none;
     cursor: default;
@@ -63,3 +63,4 @@ body {
 .bottom {
     padding-left: 20%;
 }
+
