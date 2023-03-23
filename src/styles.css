@@ -54,9 +54,28 @@ body {
     cursor: default;
 }
 
-
-
 .bottom {
     padding-left: 20%;
 }
 
+.day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.temp-line {
+   display: flex;
+   text-align: center;
+   align-items: center;
+   justify-content: center;
+
+}
+#weathericon {
+    display: flex;
+margin-left: 30%;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+}
