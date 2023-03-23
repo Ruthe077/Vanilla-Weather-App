@@ -36,14 +36,17 @@ function displayForecast() {
     let forecastElement = document.querySelector("#forecast");
 
     let forecastHTML = `<div class="row">`;
-
-    forecastHTML.innerHTML = forecastHTML + ` <div class="col-2">
+    let days = ["Fri", "Sat", "Sun", "Mon", "Tue"];
+    days.forEach(function(day) {
+        forecastHTML = forecastHTML + ` <div class="col-2">
           <div class="day">MONDAY</div>
           <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png" width="42px">
           <span class="temp-max">20° </span>
           <span class="temp-min">  18°</span>
           </div>
           `;
+    });
+    
 
       forecastHTML = forecastHTML + `</div>`;
       
