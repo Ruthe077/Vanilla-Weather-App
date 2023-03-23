@@ -31,8 +31,8 @@ day.innerHTML = days[now.getDay()].toUpperCase();
 
 //integrating weather API
 
-function displayForecast() {
-    
+function displayForecast(response) {
+    console.log(response.data.daily);
     let forecastElement = document.querySelector("#forecast");
 
     let forecastHTML = `<div class="row">`;
@@ -58,6 +58,16 @@ function displayForecast() {
   
 }
 
+function getForecast(coordinates) {
+ console.log(coordinates);
+ let lon = coordinates.longitude;
+ let lat = coordinates.latitude;
+ let apiKey = "3at2b7b503ccbeb5e43637ffc4ae05oa";
+let url = `https://api.shecodes.io/weather/v1/forecast?lon=${lon}&lat=${lat}&key=${apiKey}&units=metric`;
+console.log(url);
+axios.get(url).then(displayForecast);
+}
+
 function getTemp(response) {
   console.log(response);
   celciusTemp = Math.round(response.data.temperature.current);
@@ -74,6 +84,8 @@ function getTemp(response) {
   cityTemp.innerHTML = `${celciusTemp}°`;
   location.innerHTML = city;
  wind.innerHTML = Math.round(response.data.wind.speed);
+
+ getForecast(response.data.coordinates);
 }
 
 
@@ -105,7 +117,7 @@ function convertFahrenheit(event) {
 }
 
 
-displayForecast();
+
 
 let celciusTemp = null;
 
