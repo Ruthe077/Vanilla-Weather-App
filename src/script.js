@@ -30,25 +30,39 @@ day.innerHTML = days[now.getDay()].toUpperCase();
 
 
 //integrating weather API
+function formatDay(timestamp) {
+    let date = new Date(timestamp * 1000);
+    let day = date.getDay();
+    let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    return days[day];
+
+}
 
 function displayForecast(response) {
     console.log(response.data.daily);
+    let forecast = response.data.daily;
     let forecastElement = document.querySelector("#forecast");
-
+  
     let forecastHTML = `<div class="row">`;
-    let days = ["Fri", "Sat", "Sun", "Mon", "Tue"];
-    days.forEach(function(day) {
+   
+    forecast.forEach(function(forecastDay, index) {
+        let tempmax = Math.round(forecastDay.temperature.maximum);
+        let tempmin = Math.round(forecastDay.temperature.minimum);
+        let img = forecastDay.condition.icon_url;
+
+        if (index < 6 && index > 0) {
         forecastHTML = forecastHTML + ` <div class="col">
-          <div class="day">${day}</div>
+          <div class="day">${formatDay(forecastDay.time)}</div>
           <div class="weathericon">
-          <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png" id="weathericon" width="40%"/>
+          <img src=${img} id="weathericon" width="50%"/>
           </div>
           <span class="temp-line">
-          <span class="temp-max">20° </span>
-          <span class="temp-min">  18°</span>
+          <span class="temp-max">${tempmax}° </span>
+          <span class="temp-min">  ${tempmin}°</span>
           </span>
           </div>
           `;
+        }
     });
     
 
