@@ -77,14 +77,14 @@ function getForecast(coordinates) {
  let lon = coordinates.longitude;
  let lat = coordinates.latitude;
  let apiKey = "3at2b7b503ccbeb5e43637ffc4ae05oa";
-let url = `https://api.shecodes.io/weather/v1/forecast?lon=${lon}&lat=${lat}&key=${apiKey}&units=metric`;
+let url = `https://api.shecodes.io/weather/v1/forecast?lon=${lon}&lat=${lat}&key=${apiKey}&units=imperial`;
 console.log(url);
 axios.get(url).then(displayForecast);
 }
 
 function getTemp(response) {
   console.log(response);
-  celciusTemp = Math.round(response.data.temperature.current);
+  fahrenheitTemp = Math.round(response.data.temperature.current);
   let humidity = document.querySelector("#humidity")
   let location = document.querySelector("#city");
   let cityTemp = document.querySelector("#temp");
@@ -95,7 +95,7 @@ function getTemp(response) {
   icon.setAttribute("src", response.data.condition.icon_url);
   condition.innerHTML = response.data.condition.description.toUpperCase();
   humidity.innerHTML = response.data.temperature.humidity;
-  cityTemp.innerHTML = `${celciusTemp}°`;
+  cityTemp.innerHTML = `${fahrenheitTemp}°`;
   location.innerHTML = city;
  wind.innerHTML = Math.round(response.data.wind.speed);
 
@@ -106,28 +106,28 @@ function getTemp(response) {
 function changeCity(event) {
   event.preventDefault();
   let apiKey = "3at2b7b503ccbeb5e43637ffc4ae05oa";
-  let unit = "units=metric";
+  let unit = "units=imperial";
   let city = document.querySelector("#city-input");
   city = (city.value);
   let url = "https://api.shecodes.io/weather/v1/current?query=";
   axios.get(`${url}${city}&key=${apiKey}&${unit}`).then(getTemp);
 }
 
-function convertCelcius(event) {
-    event.preventDefault();
-    fahrenheitButton.classList.remove("active");
-    celciusButton.classList.add("active");
-    let cityTemp = document.querySelector("#temp");
-    cityTemp.innerHTML = `${celciusTemp}°`;
-}
-
 function convertFahrenheit(event) {
     event.preventDefault();
-    celciusButton.classList.remove("active");
     fahrenheitButton.classList.add("active");
+    celciusButton.classList.remove("active");
     let cityTemp = document.querySelector("#temp");
-   let fahrenheitTemp = (celciusTemp * 9) / 5 + 32;
-   cityTemp.innerHTML = `${Math.round(fahrenheitTemp)}°`;
+    cityTemp.innerHTML = `${fahrenheitTemp}°`;
+}
+
+function convertCelcius(event) {
+    event.preventDefault();
+    celciusButton.classList.add("active");
+    fahrenheitButton.classList.remove("active");
+    let cityTemp = document.querySelector("#temp");
+   let celciusTemp = (fahrenheitTemp - 32) * 5 / 9;
+   cityTemp.innerHTML = `${Math.round(celciusTemp)}°`;
 }
 
 

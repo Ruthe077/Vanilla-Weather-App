@@ -91,4 +91,8 @@ margin-left: 25%;
 }
 .temp-min {
     opacity: .6;
+    font-size: 12px;
+}
+.temp-max {
+    font-size: 12px;
 }
