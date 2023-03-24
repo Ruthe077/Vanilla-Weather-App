@@ -57,8 +57,8 @@ function displayForecast(response) {
           <img src=${img} id="weathericon" width="50%"/>
           </div>
           <span class="temp-line">
-          <span class="temp-max">${tempmax}° </span>
-          <span class="temp-min">  ${tempmin}°</span>
+          <span class="temp-max">${tempmax}°</span>
+          <span class="temp-min">&nbsp${tempmin}°</span>
           </span>
           </div>
           `;
