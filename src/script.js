@@ -131,6 +131,84 @@ function convertCelcius(event) {
 }
 
 
+function displayHoustonForecast(response) {
+    console.log(response.data.daily);
+    let forecast = response.data.daily;
+    let forecastElement = document.querySelector("#forecast");
+  
+    let forecastHTML = `<div class="row">`;
+   
+    forecast.forEach(function(forecastDay, index) {
+        let tempmax = Math.round(forecastDay.temperature.maximum);
+        let tempmin = Math.round(forecastDay.temperature.minimum);
+        let img = forecastDay.condition.icon_url;
+
+        if (index < 6 && index > 0) {
+        forecastHTML = forecastHTML + ` <div class="col">
+          <div class="day">${formatDay(forecastDay.time)}</div>
+          <div class="weathericon">
+          <img src=${img} id="weathericon" width="50%"/>
+          </div>
+          <span class="temp-line">
+          <span class="temp-max">${tempmax}°</span>
+          <span class="temp-min">&nbsp${tempmin}°</span>
+          </span>
+          </div>
+          `;
+        }
+    });
+    
+
+      forecastHTML = forecastHTML + `</div>`;
+      
+    forecastElement.innerHTML = forecastHTML;
+  
+}
+
+
+function getHoustonForecast(coordinates) {
+ console.log(coordinates);
+ let lon = coordinates.longitude;
+ let lat = coordinates.latitude;
+ let apiKey = "3at2b7b503ccbeb5e43637ffc4ae05oa";
+let url = `https://api.shecodes.io/weather/v1/forecast?lon=${lon}&lat=${lat}&key=${apiKey}&units=imperial`;
+console.log(url);
+axios.get(url).then(displayHoustonForecast);
+
+}
+
+function displayHouston (response) {
+  console.log(response);
+  fahrenheitTemp = Math.round(response.data.temperature.current);
+  let humidity = document.querySelector("#humidity")
+  let location = document.querySelector("#city");
+  let cityTemp = document.querySelector("#temp");
+  let city = response.data.city;
+  let condition = document.querySelector("#description");
+  let wind = document.querySelector("#wind");
+  let icon = document.querySelector("#icon");
+  icon.setAttribute("src", response.data.condition.icon_url);
+  condition.innerHTML = response.data.condition.description.toUpperCase();
+  humidity.innerHTML = response.data.temperature.humidity;
+  cityTemp.innerHTML = ` \xa0 ${fahrenheitTemp}°`;
+  location.innerHTML = city;
+  wind.innerHTML = Math.round(response.data.wind.speed);
+
+  getHoustonForecast(response.data.coordinates);
+}
+
+function startingInfo() {
+  let apiKey = "3at2b7b503ccbeb5e43637ffc4ae05oa";
+  let unit = "units=imperial";
+  let city = document.querySelector("#city");
+  city = "Houston";
+  let url = "https://api.shecodes.io/weather/v1/current?query=";
+  axios.get(`${url}${city}&key=${apiKey}&${unit}`).then(displayHouston);
+}
+
+
+
+window.addEventListener("load", startingInfo);
 
 
 let celciusTemp = null;
