@@ -95,7 +95,7 @@ function getTemp(response) {
   icon.setAttribute("src", response.data.condition.icon_url);
   condition.innerHTML = response.data.condition.description.toUpperCase();
   humidity.innerHTML = response.data.temperature.humidity;
-  cityTemp.innerHTML = `${fahrenheitTemp}°`;
+  cityTemp.innerHTML = ` \xa0 ${fahrenheitTemp}°`;
   location.innerHTML = city;
  wind.innerHTML = Math.round(response.data.wind.speed);
 
@@ -118,7 +118,7 @@ function convertFahrenheit(event) {
     fahrenheitButton.classList.add("active");
     celciusButton.classList.remove("active");
     let cityTemp = document.querySelector("#temp");
-    cityTemp.innerHTML = `${fahrenheitTemp}°`;
+    cityTemp.innerHTML = `\xa0${fahrenheitTemp}°`;
 }
 
 function convertCelcius(event) {
@@ -127,7 +127,7 @@ function convertCelcius(event) {
     fahrenheitButton.classList.remove("active");
     let cityTemp = document.querySelector("#temp");
    let celciusTemp = (fahrenheitTemp - 32) * 5 / 9;
-   cityTemp.innerHTML = `${Math.round(celciusTemp)}°`;
+   cityTemp.innerHTML = `\xa0${Math.round(celciusTemp)}°`;
 }
 
 
